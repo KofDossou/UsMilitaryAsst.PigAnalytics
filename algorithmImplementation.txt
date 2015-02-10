@@ -1,0 +1,14 @@
+Alogrithm implemention on Ebola metadata
+=========================================
+/*military is assigned the path to hdfs(hadoop distribution filesystem) */
+
+Step 1: military= LOAD '/class/military.csv'USING PigStorage(',') AS (countryname:chararray,programname:chararray,FY:int);
+
+Step2: B= foreach military generate countryname,programname,FY;
+
+/*assign C to hold only the distinct (different) of B.*/
+Step3: C= distinct B;
+
+Step4: D= limit C 50;
+
+Step:5 Dump D;
